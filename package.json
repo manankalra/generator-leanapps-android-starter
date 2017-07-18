@@ -7,7 +7,7 @@
     "email": "mananenroll29@gmail.com",
     "url": "https://github.com/manankalra/"
   },
-  "repository": "ravidsrk/generator-android-mvp-starter",
+  "repository": "manankalra/generator-leanapps-android-starter",
   "main": "generators/index.js",
   "files": [
     "generators"
