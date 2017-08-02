@@ -26,6 +26,7 @@ describe('generator-android-mvp-starter:app', function () {
       'gradlew',
       'gradlew.bat',
       'settings.gradle',
+      'local.properties',
       'README.md'
     ]);
   });

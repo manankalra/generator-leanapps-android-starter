@@ -102,7 +102,7 @@ module.exports = Generator.extend({
     this.fs.copy(appPath + 'fastlane/Fastfile', 'fastlane/Fastfile');
     this.fs.copy(appPath + 'fastlane/Screengrabfile', 'fastlane/Screengrabfile');
     this.fs.copy(appPath + 'sonar.project.properties', 'sonar.project.properties');
-
+    this.fs.copy(appPath + 'local.properties', 'local.properties');
 
     if (this.props.language === 'java') {
       this.fs.copy(appPath + 'config', 'config');
