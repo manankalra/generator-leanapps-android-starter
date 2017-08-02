@@ -75,6 +75,8 @@ module.exports = Generator.extend({
     }
 
     mkdirp('app');
+    mkdirp('fastlane');
+    mkdirp('fastlane/actions')
     mkdirp('app/src/main/assets');
     mkdirp('app/src/main/java/' + packageDir);
     mkdirp('app/src/androidTest/java/' + packageDir);
@@ -96,6 +98,9 @@ module.exports = Generator.extend({
     this.fs.copy(appPath + 'app/lint.xml', 'app/lint.xml');
     this.fs.copy(appPath + 'app/dependencies.gradle', 'app/dependencies.gradle');
     this.fs.copy(appPath + 'app/proguard-rules.pro', 'app/proguard-rules.pro');
+    this.fs.copy(appPath + 'fastlane/Appfile', 'fastlane/Appfile');
+    this.fs.copy(appPath + 'fastlane/Fastfile', 'fastlane/Fastfile');
+    this.fs.copy(appPath + 'fastlane/Screengrabfile', 'fastlane/Screengrabfile');
 
     if (this.props.language === 'java') {
       this.fs.copy(appPath + 'config', 'config');

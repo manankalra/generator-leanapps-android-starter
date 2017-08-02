@@ -30,6 +30,14 @@ describe('generator-android-mvp-starter:app', function () {
     ]);
   });
 
+  it('creates fastlane project files', function () {
+    assert.file([
+      'fastlane/Fastfile',
+      'fastlane/Appfile',
+      'fastlane/Screengrabfile'
+    ]);
+  });
+
   it('creates core app files', function () {
     assert.file([
       'app/.gitignore',

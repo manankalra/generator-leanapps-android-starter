@@ -1,0 +1,86 @@
+# update_fastlane
+fastlane_version "2.50.0"
+default_platform :android
+platform :android do
+	
+	DEBUG_APK_PATH = "/app/build/outputs/apk/debug/app-debug.apk"
+	RELEASE_APK_PATH = "/app/build/outputs/apk/release/<name-of-the-signed-apk>.apk" 
+
+	before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+  	end
+
+  	desc "Final"
+  	lane :final do
+  		test
+  		#verify
+  		clean
+  		deploy
+  	end
+
+  	desc "Assembles all variants of all applications and secondary packages"
+  	lane :assemble do
+  		gradle(task: "assemble")
+  	end
+
+  	desc "Assemble all Debug builds"
+  	lane :assembleDebug do
+    	gradle(task: "assembleDebug")
+  	end
+
+  	desc "Assemble all Release builds"
+  	lane :assembleRelease do
+    	gradle(task: "assembleRelease")
+  	end
+
+  	desc "Clean the project"
+  	lane :clean do
+  		gradle(task: "clean")
+  	end
+
+  	desc "Runs all the tests"
+  	lane :test do
+    	gradle(task: "test")
+  	end
+
+  	desc "Runs unit tests for the debug build"
+  	lane :test do
+    	gradle(task: "testDebugUnitTest")
+  	end
+
+  	desc "Runs unit tests for the release build"
+  	lane :test do
+    	gradle(task: "testReleaseUnitTest")
+  	end
+
+  	desc "Verification tasks"
+  	lane :verify do
+  		gradle(task: "pmd")
+  		gradle(task: "findbugs")
+  		gradle(task: "checkstyle")
+  	end
+
+  	desc "Assemble and test the project"
+  	lane :build do
+    	gradle(task: "build")
+  	end
+
+  	desc "Deploy a new version to the Google Play"
+  	lane :deploy do
+    	gradle(task: "assemble", build_type: "Release")
+    	supply(track: "final", apk: RELEASE_APK_PATH)
+  	end
+
+  	after_all do |lane|
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  	end
+
+  	error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  	end
+end
