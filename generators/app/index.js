@@ -88,7 +88,7 @@ module.exports = Generator.extend({
 
     var appPath = this.sourceRoot() + '/' + appFolder + '/';
 
-    this.fs.copy(appPath + 'gitignore', '.gitignore');
+    this.fs.copy(appPath + '.gitignore', '.gitignore');
     this.fs.copy(appPath + 'build.gradle', 'build.gradle');
     this.fs.copy(appPath + 'gradle.properties', 'gradle.properties');
     this.fs.copy(appPath + 'gradlew', 'gradlew');
