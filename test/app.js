@@ -38,6 +38,12 @@ describe('generator-android-mvp-starter:app', function () {
     ]);
   });
 
+  it('creates sonar file', function () {
+    assert.file([
+      'sonar.project.properties'
+    ]);
+  });
+
   it('creates core app files', function () {
     assert.file([
       'app/.gitignore',
