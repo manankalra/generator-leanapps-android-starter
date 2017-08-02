@@ -1,6 +1,6 @@
 {
   "name": "generator-leanapps-android-starter",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A Yeoman generator for Android",
   "author": {
     "name": "Manan Kalra",
